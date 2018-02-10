@@ -8,7 +8,7 @@
 
   <!-- Title -->
   
-  <title>CZ&#39;s World</title>
+  <title>java对象地址传递问题 - CZ&#39;s World</title>
 
   <!--Favicon-->
   <link rel="icon" href="favicon/favicon.ico">
@@ -89,30 +89,19 @@
 
 
   		<div class="row">
-  			
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2018/02/10/java对象地址传递问题/">
-      <img class="img-fluid portfolio-img" src="/peitu.png" alt="java对象地址传递问题">
-      <div class="overlay">
-        <span class="overlay-text">java对象地址传递问题</span>
-      </div>
-    </a>
-  </div>
+  			<div class="col-12 mb-4">
+  <img class="img-fluid project-img" src="/peitu.png" alt="java对象地址传递问题">
 </div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2018/02/09/20180209/">
-      <img class="img-fluid portfolio-img" src="/images/sanfrancisco.jpg" alt="旧金山">
-      <div class="overlay">
-        <span class="overlay-text">旧金山</span>
-      </div>
-    </a>
-  </div>
+<div class="col-lg-4 col-12 pt-3 px-4 pr-lg-5">
+  <h1>java对象地址传递问题</h1>
 </div>
+<div class="col-lg-8 col-12 pt-lg-3 mb-4 pl-lg-5 px-lg-0 px-4 portfolio-content">
+  <p>今天刷题的时候刷到一个基础不扎实的地方，也就是：java对象作为参数传递时的地址传递问题。<br>我是知道对象是地址传递而基本变量是值传递的，可是我忘了一点，所谓值传递其实是指针指向了地址，所以在函数里改变了这个地址的值，在函数外也相应改变了。<br>今天做的题是需要按层来遍历一个二叉树的，我设了一个temp的array，想在函数里把它重置为空。函数长这样：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">(List&lt;TreeNode&gt; dest, List&lt;TreeNode&gt; source)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (TreeNode node : source)</span><br><span class="line">		dest.add(node);</span><br><span class="line">	source = <span class="keyword">new</span> ArrayList&lt;TreeNode&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>结果死循环了，debug了才发现，source在函数内被重置为空，在外面并没有，于是我的while list为空的循环就一直跳不出去，所以死循环。<br>后来想明白了，地址传递传的是指针，而new的时候是把当前的指针指向了另一个地址，而不改变之前的指针所指向的地址的值，所以之前的指针所指向的值仍旧是原来的样子，不会被改变。</p>
+<p>哎，基础知识太不扎实啦！</p>
+<p><img src="peitu.png" alt=""></p>
 
+</div>
 
 
       </div>
